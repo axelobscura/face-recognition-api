@@ -34,7 +34,8 @@ app.get('/', (req, res) => {
 
 app.post('/signin', (req, res) => {
   if(req.body.email === database.users[0].email && req.body.password === database.users[0].password){
-    res.json('Successssss')
+    //console.log(database.user[0]);
+    res.json(database.users[0])
   } else {
     res.status(400).json('errror!!!');
   }
@@ -77,6 +78,7 @@ app.put('/image', (req, res) => {
     if(user.id === id){
       found = true;
       user.entries++
+      console.log(user.entries);
       return res.json(user.entries);
     }
   })
